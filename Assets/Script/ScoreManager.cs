@@ -24,9 +24,9 @@ public class ScoreManager : MonoBehaviour
     }
     
     // Start is called before the first frame update
-    void CoinsCollected()
+    void CoinsCollected(int amount)
     {
-        CurrentScore += 10;
+        CurrentScore += amount;
         
         OnScore.Invoke(CurrentScore);
         // ScoreGUI.UpdateScore(CurrentScore);

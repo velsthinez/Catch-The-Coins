@@ -468,7 +468,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CoinPrefab: {fileID: 7017747087942580418, guid: 091fb8daff70626438037161ddb931a6, type: 3}
+  RareCoinPrefab: {fileID: 5565417680363471441, guid: 4f0655d79f3c7fe4190126be19250ca5, type: 3}
   MinMaxPos: {x: -9.47, y: 9.47}
+  RareSpawnChance: 5
   SpawnInterval: 0.05
   isSpawning: 0
   spawnTimer: 0

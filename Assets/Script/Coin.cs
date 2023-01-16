@@ -6,11 +6,12 @@ using Random = System.Random;
 
 public class Coin : MonoBehaviour
 {
-    public delegate void OnCoinCollected();
+    public delegate void OnCoinCollected(int amount);
 
     public static OnCoinCollected onCoinCollected;
     
     public bool Test = false;
+    public int CoinsAmount = 10;
     public GameObject CoinsEffect ;
     public  GameObject _sprite;
     private Collider2D _collider2D;
@@ -35,7 +36,7 @@ public class Coin : MonoBehaviour
 
         GameObject.Instantiate(CoinsEffect, transform.position, Quaternion.identity);
         
-        onCoinCollected.Invoke();
+        onCoinCollected.Invoke(CoinsAmount);
         // Debug.Log("collected")
 
         _sprite.SetActive(false);
