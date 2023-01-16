@@ -20,6 +20,18 @@ public class Spawner : MonoBehaviour
 
     public float spawnTimer;
 
+    private bool _isTimeUp = false;
+    
+    private void OnEnable()
+    {
+        TimeManager.OnEnd += GameEnd;
+    }
+
+    private void OnDisable()
+    {
+        TimeManager.OnEnd -= GameEnd;
+    }
+    
     private void Start()
     {
         spawnTimer = SpawnInterval;
@@ -31,6 +43,10 @@ public class Spawner : MonoBehaviour
         // if (isSpawning)
         //     return;
 
+        if (_isTimeUp)
+            return;
+        
+        
         if (spawnTimer > 0)
         {
             spawnTimer -= Time.deltaTime;
@@ -55,4 +71,10 @@ public class Spawner : MonoBehaviour
             spawnTimer = SpawnInterval;
         }
     }
+
+    private void GameEnd()
+    {
+        _isTimeUp = true;
+    }
+
 }

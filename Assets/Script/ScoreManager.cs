@@ -9,18 +9,24 @@ public class ScoreManager : MonoBehaviour
 
     public static OnScoreUpdate OnScore;
     
+    public delegate void OnFinalScore(int score);
+
+    public static OnFinalScore OnFinal;        
+        
+        
     public int CurrentScore = 0;
-
-    public ScoreGUI ScoreGUI;
-
+    
+    
     private void OnEnable()
     {
         Coin.onCoinCollected += CoinsCollected;
+        TimeManager.OnEnd += FinalScore;
     }
 
     private void OnDisable()
     {
         Coin.onCoinCollected -= CoinsCollected;
+        TimeManager.OnEnd -= FinalScore;
     }
     
     // Start is called before the first frame update
@@ -30,6 +36,12 @@ public class ScoreManager : MonoBehaviour
         
         OnScore.Invoke(CurrentScore);
         // ScoreGUI.UpdateScore(CurrentScore);
+    }
+
+    void FinalScore()
+    {
+        OnFinal.Invoke(CurrentScore);
+        Debug.Log("final score is " +  CurrentScore);
     }
 
 }
